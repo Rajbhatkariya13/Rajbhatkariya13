@@ -4,33 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Raj Bhatkariya | Senior Software Engineer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* CSS Styles */
+        /* Define modern colors & gradients */
         :root {
+            --primary-gradient: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
             --primary-color: #2563eb;
-            --dark-color: #0f172a;
-            --light-color: #f8fafc;
-            --text-color: #334155;
-            --gray-color: #e2e8f0;
+            --dark-color: #1e293b;
+            --light-color: #f1f5f9;
+            --text-main: #334155;
+            --text-light: #64748b;
+            --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --ease: cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
 
         body {
-            color: var(--text-color);
-            line-height: 1.6;
-            background-color: #ffffff;
+            color: var(--text-main);
+            line-height: 1.7;
+            overflow-x: hidden; /* Prevent horizontal scroll from animations */
         }
 
-        a { text-decoration: none; color: inherit; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
         
         .container {
             max-width: 1100px;
@@ -38,14 +43,53 @@
             padding: 0 20px;
         }
 
-        /* Navigation */
+        /* Standardize section headings */
+        h2.section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-bottom: 50px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        h2.section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-gradient);
+            border-radius: 2px;
+        }
+
+        /* === Scroll Animation Setup === */
+        /* This class will be removed by JavaScript when the element is scrolled into view */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s var(--ease), transform 1s var(--ease);
+            will-change: transform, opacity;
+        }
+
+        /* This class is added by JavaScript */
+        .is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* === Navigation === */
         nav {
-            background-color: var(--dark-color);
-            color: white;
-            padding: 20px 0;
-            position: sticky;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 15px 0;
+            position: fixed; /* Stick to top */
             top: 0;
-            z-index: 100;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid #e2e8f0;
         }
 
         nav .container {
@@ -54,102 +98,233 @@
             align-items: center;
         }
 
-        nav h1 { font-size: 1.5rem; font-weight: 700; }
-        nav ul { list-style: none; display: flex; gap: 20px; }
-        nav ul li a { font-weight: 600; transition: color 0.3s; }
+        nav h1 { font-size: 1.6rem; color: var(--dark-color); }
+        nav h1 span { color: var(--primary-color); }
+
+        nav ul { list-style: none; display: flex; gap: 30px; }
+        nav ul li a { font-weight: 500; font-size: 0.95rem; color: var(--text-main); }
         nav ul li a:hover { color: var(--primary-color); }
 
-        /* Hero Section */
+        /* === Hero Section === */
         #hero {
-            background-color: var(--light-color);
-            padding: 100px 0;
-            text-align: center;
-            border-bottom: 1px solid var(--gray-color);
-        }
-
-        #hero h2 { font-size: 3rem; color: var(--dark-color); margin-bottom: 10px; }
-        #hero h3 { font-size: 1.5rem; color: var(--primary-color); margin-bottom: 20px; }
-        #hero p { max-width: 600px; margin: 0 auto 30px; font-size: 1.1rem; }
-        
-        .btn {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: background 0.3s;
-        }
-        .btn:hover { background-color: #1d4ed8; }
-
-        /* General Section Layout */
-        section { padding: 80px 0; border-bottom: 1px solid var(--gray-color); }
-        section h2 { 
-            text-align: center; 
-            font-size: 2.5rem; 
-            color: var(--dark-color); 
-            margin-bottom: 40px; 
-        }
-
-        /* Skills Section */
-        .skills-grid {
+            height: 100vh;
+            background-color: #ffffff;
             display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
+            align-items: center;
             justify-content: center;
+            padding-top: 100px; /* Offset for fixed nav */
+            position: relative;
         }
-        .skill-badge {
-            background-color: var(--light-color);
-            border: 1px solid var(--gray-color);
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-weight: 600;
-            color: var(--dark-color);
+        
+        /* Subtle moving background dots for hero */
+        #hero::before {
+            content: "";
+            position: absolute;
+            width: 100%; height: 100%;
+            background-image: radial-gradient(#e2e8f0 1.5px, transparent 1.5px);
+            background-size: 30px 30px;
+            opacity: 0.5;
+            top: 0; left: 0;
         }
 
-        /* Experience Section */
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* --- IMAGES: Profile Picture --- */
+        .profile-img-container {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            padding: 6px;
+            background: var(--primary-gradient);
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
+            animation: profileFloat 4s ease-in-out infinite; /* Continuous float animation */
+        }
+
+        .profile-img-container img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: white; /* Shows until image loads */
+        }
+
+        @keyframes profileFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        #hero h2 { font-size: 4rem; color: var(--dark-color); margin-bottom: 10px; line-height: 1.1; }
+        #hero h2 span { background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        /* --- ANIMATION: Typing Effect --- */
+        .typewriter h3 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            display: inline-block;
+            border-right: 3px solid var(--primary-color); /* The cursor */
+            white-space: nowrap;
+            overflow: hidden;
+            letter-spacing: 1px;
+            width: 0; /* Starts hidden */
+            animation: typing 2.5s steps(30, end) 1s forwards, blink-cursor 0.75s step-end infinite;
+        }
+
+        @keyframes typing { from { width: 0; } to { width: 100%; } }
+        @keyframes blink-cursor { from, to { border-color: transparent; } 50% { border-color: var(--primary-color); } }
+
+        .btn-container { display: flex; gap: 20px; }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        /* --- ANIMATION: Hover Effects --- */
+        .btn-primary {
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+        .btn-primary:hover {
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        .btn-secondary:hover {
+            background-color: rgba(37, 99, 235, 0.05);
+            transform: translateY(-2px);
+        }
+
+        /* === Sections General === */
+        section { padding: 100px 0; border-bottom: 1px solid #e2e8f0; }
+
+        /* === Skills Section === */
+        #skills { background-color: var(--light-color); }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        /* --- ANIMATION: Skill Card Hover --- */
+        .skill-badge {
+            background: white;
+            border: 1px solid #e2e8f0;
+            padding: 25px 15px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            transition: all 0.4s var(--ease);
+        }
+
+        .skill-badge:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--card-shadow);
+            border-color: var(--primary-color);
+        }
+
+        .skill-badge i { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 15px; display: block;}
+        .skill-badge span { font-weight: 600; color: var(--dark-color); display: block; }
+
+        /* === Experience Section === */
         .job-card {
             background: white;
-            border: 1px solid var(--gray-color);
-            border-radius: 8px;
-            padding: 30px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: var(--card-shadow);
+            display: grid;
+            grid-template-columns: 80px 1fr; /* Logo column and content column */
+            gap: 25px;
+            transition: transform 0.3s ease;
         }
+
+        /* --- ANIMATION: Job Card Hover --- */
+        .job-card:hover { transform: scale(1.02); }
+
+        /* --- IMAGES: Company Logos --- */
+        .company-logo {
+            width: 80px; height: 80px;
+            background-color: var(--light-color);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden; padding: 10px;
+        }
+        .company-logo img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
         .job-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
             margin-bottom: 15px;
-            flex-wrap: wrap;
         }
-        .job-title { color: var(--dark-color); font-size: 1.3rem; }
+        
+        .job-title { color: var(--dark-color); font-size: 1.4rem; font-weight: 700; }
         .job-company { color: var(--primary-color); font-weight: 600; font-size: 1.1rem; }
-        .job-date { color: #64748b; font-size: 0.95rem; }
-        .job-card ul { margin-left: 20px; margin-top: 10px; }
-        .job-card ul li { margin-bottom: 8px; }
+        .job-date { color: var(--text-light); font-size: 0.9rem; }
+        
+        .job-card ul { list-style: none; margin-top: 15px; }
+        .job-card ul li { position: relative; padding-left: 25px; margin-bottom: 10px; color: var(--text-main); }
+        .job-card ul li::before {
+            content: "\f00c"; /* FontAwesome checkmark */
+            font-family: "Font Awesome 6 Free"; font-weight: 900;
+            position: absolute; left: 0; color: #10b981; /* green */
+        }
 
-        /* Footer / Contact */
+        /* === Footer / Contact === */
         footer {
             background-color: var(--dark-color);
             color: white;
             text-align: center;
-            padding: 40px 0;
+            padding: 60px 0 30px;
         }
-        .social-links { margin-bottom: 20px; }
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            margin: 0 10px;
-            transition: color 0.3s;
-        }
-        .social-links a:hover { color: var(--primary-color); }
+        
+        #contact h2 { color: white; border-bottom-color: white; margin-bottom: 30px; }
+        #contact p { max-width: 500px; margin: 0 auto 40px; color: #cbd5e1; }
 
-        /* Responsive */
+        .social-links { margin-bottom: 40px; display: flex; justify-content: center; gap: 20px; }
+        
+        .social-link {
+            width: 50px; height: 50px;
+            background-color: rgba(255,255,255,0.08);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem; transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background: var(--primary-gradient);
+            transform: rotate(360deg);
+        }
+
+        footer .container p { font-size: 0.9rem; color: #94a3b8; }
+
+        /* === Responsive Adaptation === */
         @media(max-width: 768px) {
-            nav .container { flex-direction: column; gap: 15px; }
-            #hero h2 { font-size: 2.5rem; }
-            .job-header { flex-direction: column; align-items: flex-start; gap: 5px; }
+            #hero h2 { font-size: 2.8rem; }
+            .typewriter h3 { font-size: 1.3rem; }
+            .job-card { grid-template-columns: 1fr; text-align: center; justify-items: center;}
+            .job-header { flex-direction: column; align-items: center; gap: 10px;}
+            .job-card ul { text-align: left; }
         }
     </style>
 </head>
@@ -157,112 +332,162 @@
 
     <nav>
         <div class="container">
-            <h1>Raj.dev</h1>
+            <h1>Raj<span>.bhadkariya</span></h1>
             <ul>
-                <li><a href="#about">About</a></li>
+                <li><a href="#hero">Home</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
 
     <header id="hero">
-        <div class="container">
-            <h2>Raj Bhatkariya</h2>
-            <h3>Senior Software Engineer</h3>
-            <p>I build robust, scalable backend architectures and near real-time data solutions using Java and modern microservices.</p>
-            <a href="mailto:raj.bhadkariya1344@gmail.com" class="btn">Get In Touch</a>
+        <div class="hero-content container">
+            
+            <div class="profile-img-container">
+                <img src="profile_pic.jpg" alt="Raj Bhatkariya Professional Headshot">
+            </div>
+
+            <h2>I'm <span>Raj</span>.</h2>
+            <div class="typewriter">
+                <h3>Senior Software Engineer</h3>
+            </div>
+            
+            <div class="btn-container">
+                <a href="#contact" class="btn btn-primary">Let's Connect</a>
+                <a href="resume.pdf" class="btn btn-secondary" target="_blank">View Resume</a>
+            </div>
         </div>
     </header>
 
-    <section id="about">
-        <div class="container">
-            <h2>About Me</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto; font-size: 1.1rem;">
-                Results-driven Software Engineer with over 4 years of experience specializing in Java development, microservices, and backend architecture. Backed by a strong problem-solving foundation and proficiency across multiple programming languages and modern deployment tools. Demonstrated ability to take full ownership of system architecture, guiding cross-functional projects from initial design concepts through to the successful implementation of scalable, real-time technical solutions.
-            </p>
-        </div>
-    </section>
-
-    <section id="skills" style="background-color: var(--light-color);">
-        <div class="container">
-            <h2>Technical Skills</h2>
+    <section id="skills">
+        <div class="container animate-on-scroll">
+            <h2 class="section-title">Technical Mastery</h2>
             <div class="skills-grid">
-                <span class="skill-badge">Java (8/21)</span>
-                <span class="skill-badge">Spring Boot</span>
-                <span class="skill-badge">Microservices</span>
-                <span class="skill-badge">RESTful APIs</span>
-                <span class="skill-badge">AWS (EC2, CloudWatch)</span>
-                <span class="skill-badge">MySQL & PostgreSQL</span>
-                <span class="skill-badge">Oracle Database</span>
-                <span class="skill-badge">Jenkins & Git</span>
-                <span class="skill-badge">C++ / Python3</span>
-                <span class="skill-badge">React JS</span>
+                
+                <div class="skill-badge">
+                    <i class="fab fa-java"></i>
+                    <span>Java (8/21)</span>
+                </div>
+                <div class="skill-badge">
+                    <i class="fas fa-leaf"></i>
+                    <span>Spring Boot</span>
+                </div>
+                <div class="skill-badge">
+                    <i class="fas fa-network-wired"></i>
+                    <span>Microservices</span>
+                </div>
+                <div class="skill-badge">
+                    <i class="fas fa-cloud"></i>
+                    <span>AWS & CloudWatch</span>
+                </div>
+                <div class="skill-badge">
+                    <i class="fas fa-database"></i>
+                    <span>MySQL / Oracle</span>
+                </div>
+                <div class="skill-badge">
+                    <i class="fab fa-react"></i>
+                    <span>React JS</span>
+                </div>
+                <div class="skill-badge">
+                    <i class="fab fa-jenkins"></i>
+                    <span>Jenkins / CI/CD</span>
+                </div>
+                
             </div>
         </div>
     </section>
 
     <section id="experience">
         <div class="container">
-            <h2>Professional Experience</h2>
+            <h2 class="section-title animate-on-scroll">Professional Journey</h2>
 
-            <div class="job-card">
-                <div class="job-header">
-                    <div>
-                        <div class="job-title">Senior Software Engineer</div>
-                        <div class="job-company">Nielsen Media India Private Limited</div>
-                    </div>
-                    <div class="job-date">January 2025 – Present</div>
+            <div class="job-card animate-on-scroll">
+                <div class="company-logo">
+                    <img src="nielsen_logo.png" alt="Nielsen Media Logo">
                 </div>
-                <ul>
-                    <li><strong>Led the Java 8 to 21 migration:</strong> Upgraded legacy applications to modern microservice standards, addressing major customer pain points and noticeably improving overall system performance.</li>
-                    <li><strong>Built Near Real-Time (NRT) capabilities:</strong> Designed the Low-Level Design (LLD) and implemented features that successfully transitioned downstream systems to a faster, real-time data flow.</li>
-                    <li><strong>Improved system observability:</strong> Enhanced data consistency and proactive monitoring for legacy systems by setting up AWS CloudWatch alarms and custom alerting applications.</li>
-                </ul>
+                <div>
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Senior Software Engineer</div>
+                            <div class="job-company">Nielsen Media India</div>
+                        </div>
+                        <div class="job-date">January 2025 – Present</div>
+                    </div>
+                    <ul>
+                        <li><Strong>Led Java 8 to 21 migration:</Strong> Addressing pain points and improving overall system performance.</li>
+                        <li><strong>Built Near Real-Time (NRT) capabilities:</strong> transitioning downstream systems to faster data flow.</li>
+                        <li><strong>Improved system observability:</strong> Enhanced data consistency by setting up AWS CloudWatch alarms.</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="job-card">
-                <div class="job-header">
-                    <div>
-                        <div class="job-title">Software Developer</div>
-                        <div class="job-company">Conneqtion Consultancy</div>
+            <div class="job-card animate-on-scroll">
+                <div class="company-logo">
+                    <i class="fas fa-building fa-2x" style="color:#64748b"></i> </div>
+                <div>
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Software Developer</div>
+                            <div class="job-company">Conneqtion Consultancy</div>
+                        </div>
+                        <div class="job-date">April 2023 – January 2025</div>
                     </div>
-                    <div class="job-date">April 2023 – January 2025</div>
+                    <ul>
+                        <li>Managed end-to-end API development for retail clients, engineering RESTful APIs.</li>
+                        <li>Modernized legacy architecture, revamping a monolithic codebase into microservices.</li>
+                    </ul>
                 </div>
-                <ul>
-                    <li>Managed end-to-end API development for a major retail client, engineering RESTful APIs to streamline cross-functional operations across Inventory, Availability, and SAVR services.</li>
-                    <li>Modernized legacy architecture for a development client, successfully revamping a monolithic codebase into a microservices architecture while maintaining production stability.</li>
-                    <li>Streamlined data storage procedures, successfully reducing processing times and increasing overall system speed by 10%.</li>
-                </ul>
-            </div>
-
-            <div class="job-card">
-                <div class="job-header">
-                    <div>
-                        <div class="job-title">Software Developer</div>
-                        <div class="job-company">Immersive Infotech (Montran India)</div>
-                    </div>
-                    <div class="job-date">September 2022 – December 2023</div>
-                </div>
-                <ul>
-                    <li>Engineered core banking software by contributing to the development of Kotak Mahindra Bank's Public Financial Management System (PFMS).</li>
-                    <li>Architected and maintained backend solutions using Java and Struts technologies, successfully deploying critical system modifications and updates.</li>
-                </ul>
             </div>
 
         </div>
     </section>
 
-    <footer>
+    <footer id="contact">
         <div class="container">
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/raj-bhatkariya-694a401b9/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/Rajbhatkariya13" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="mailto:raj.bhadkariya1344@gmail.com"><i class="fas fa-envelope"></i></a>
+            <div class="animate-on-scroll">
+                <h2 class="section-title">Get In Touch</h2>
+                <p>I'm open to interesting opportunities, collaborations, or discussing how I can help solve your architectural challenges.</p>
             </div>
-            <p>&copy; 2026 Raj Bhatkariya. Built with HTML & CSS.</p>
+            
+            <div class="social-links animate-on-scroll">
+            <a href="https://www.linkedin.com/in/raj-bhatkariya-694a401b9/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/Rajbhatkariya13" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="mailto:raj.bhadkariya1344@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+            
+            <p class="animate-on-scroll">&copy; 2026 Raj Bhatkariya. Built with passion and code.</p>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Options for the observer
+            const observerOptions = {
+                root: null, // Use viewport
+                rootMargin: '0px',
+                threshold: 0.15 // Trigger when 15% of element is visible
+            };
+
+            // Define the observer
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Add the visible class when it enters the viewport
+                        entry.target.classList.add('is-visible');
+                        
+                        // Stop observing once visible (so it doesn't animate every time you scroll up/down)
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Select all elements to animate and attach the observer
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+            animatedElements.forEach(el => observer.observe(el));
+        });
+    </script>
 
 </body>
 </html>
