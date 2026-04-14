@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raj Bhatkariya | Senior Software Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* CSS Styles */
+        :root {
+            --primary-color: #2563eb;
+            --dark-color: #0f172a;
+            --light-color: #f8fafc;
+            --text-color: #334155;
+            --gray-color: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: #ffffff;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav h1 { font-size: 1.5rem; font-weight: 700; }
+        nav ul { list-style: none; display: flex; gap: 20px; }
+        nav ul li a { font-weight: 600; transition: color 0.3s; }
+        nav ul li a:hover { color: var(--primary-color); }
+
+        /* Hero Section */
+        #hero {
+            background-color: var(--light-color);
+            padding: 100px 0;
+            text-align: center;
+            border-bottom: 1px solid var(--gray-color);
+        }
+
+        #hero h2 { font-size: 3rem; color: var(--dark-color); margin-bottom: 10px; }
+        #hero h3 { font-size: 1.5rem; color: var(--primary-color); margin-bottom: 20px; }
+        #hero p { max-width: 600px; margin: 0 auto 30px; font-size: 1.1rem; }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        .btn:hover { background-color: #1d4ed8; }
+
+        /* General Section Layout */
+        section { padding: 80px 0; border-bottom: 1px solid var(--gray-color); }
+        section h2 { 
+            text-align: center; 
+            font-size: 2.5rem; 
+            color: var(--dark-color); 
+            margin-bottom: 40px; 
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+        .skill-badge {
+            background-color: var(--light-color);
+            border: 1px solid var(--gray-color);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        /* Experience Section */
+        .job-card {
+            background: white;
+            border: 1px solid var(--gray-color);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .job-title { color: var(--dark-color); font-size: 1.3rem; }
+        .job-company { color: var(--primary-color); font-weight: 600; font-size: 1.1rem; }
+        .job-date { color: #64748b; font-size: 0.95rem; }
+        .job-card ul { margin-left: 20px; margin-top: 10px; }
+        .job-card ul li { margin-bottom: 8px; }
+
+        /* Footer / Contact */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+        .social-links { margin-bottom: 20px; }
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        .social-links a:hover { color: var(--primary-color); }
+
+        /* Responsive */
+        @media(max-width: 768px) {
+            nav .container { flex-direction: column; gap: 15px; }
+            #hero h2 { font-size: 2.5rem; }
+            .job-header { flex-direction: column; align-items: flex-start; gap: 5px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container">
+            <h1>Raj.dev</h1>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header id="hero">
+        <div class="container">
+            <h2>Raj Bhatkariya</h2>
+            <h3>Senior Software Engineer</h3>
+            <p>I build robust, scalable backend architectures and near real-time data solutions using Java and modern microservices.</p>
+            <a href="mailto:raj.bhadkariya1344@gmail.com" class="btn">Get In Touch</a>
+        </div>
+    </header>
+
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto; font-size: 1.1rem;">
+                Results-driven Software Engineer with over 4 years of experience specializing in Java development, microservices, and backend architecture. Backed by a strong problem-solving foundation and proficiency across multiple programming languages and modern deployment tools. Demonstrated ability to take full ownership of system architecture, guiding cross-functional projects from initial design concepts through to the successful implementation of scalable, real-time technical solutions.
+            </p>
+        </div>
+    </section>
+
+    <section id="skills" style="background-color: var(--light-color);">
+        <div class="container">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <span class="skill-badge">Java (8/21)</span>
+                <span class="skill-badge">Spring Boot</span>
+                <span class="skill-badge">Microservices</span>
+                <span class="skill-badge">RESTful APIs</span>
+                <span class="skill-badge">AWS (EC2, CloudWatch)</span>
+                <span class="skill-badge">MySQL & PostgreSQL</span>
+                <span class="skill-badge">Oracle Database</span>
+                <span class="skill-badge">Jenkins & Git</span>
+                <span class="skill-badge">C++ / Python3</span>
+                <span class="skill-badge">React JS</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <h2>Professional Experience</h2>
+
+            <div class="job-card">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">Senior Software Engineer</div>
+                        <div class="job-company">Nielsen Media India Private Limited</div>
+                    </div>
+                    <div class="job-date">January 2025 – Present</div>
+                </div>
+                <ul>
+                    <li><strong>Led the Java 8 to 21 migration:</strong> Upgraded legacy applications to modern microservice standards, addressing major customer pain points and noticeably improving overall system performance.</li>
+                    <li><strong>Built Near Real-Time (NRT) capabilities:</strong> Designed the Low-Level Design (LLD) and implemented features that successfully transitioned downstream systems to a faster, real-time data flow.</li>
+                    <li><strong>Improved system observability:</strong> Enhanced data consistency and proactive monitoring for legacy systems by setting up AWS CloudWatch alarms and custom alerting applications.</li>
+                </ul>
+            </div>
+
+            <div class="job-card">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">Software Developer</div>
+                        <div class="job-company">Conneqtion Consultancy</div>
+                    </div>
+                    <div class="job-date">April 2023 – January 2025</div>
+                </div>
+                <ul>
+                    <li>Managed end-to-end API development for a major retail client, engineering RESTful APIs to streamline cross-functional operations across Inventory, Availability, and SAVR services.</li>
+                    <li>Modernized legacy architecture for a development client, successfully revamping a monolithic codebase into a microservices architecture while maintaining production stability.</li>
+                    <li>Streamlined data storage procedures, successfully reducing processing times and increasing overall system speed by 10%.</li>
+                </ul>
+            </div>
+
+            <div class="job-card">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">Software Developer</div>
+                        <div class="job-company">Immersive Infotech (Montran India)</div>
+                    </div>
+                    <div class="job-date">September 2022 – December 2023</div>
+                </div>
+                <ul>
+                    <li>Engineered core banking software by contributing to the development of Kotak Mahindra Bank's Public Financial Management System (PFMS).</li>
+                    <li>Architected and maintained backend solutions using Java and Struts technologies, successfully deploying critical system modifications and updates.</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/raj-bhatkariya-694a401b9/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Rajbhatkariya13" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="mailto:raj.bhadkariya1344@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>&copy; 2026 Raj Bhatkariya. Built with HTML & CSS.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
