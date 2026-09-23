@@ -3,575 +3,388 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raj Bhatkariya | Senior Software Engineer</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <title>Raj Bhatkariya — Software Engineer</title>
+    <meta name="description" content="Raj Bhatkariya — Java/Spring Boot engineer with 4+ years in distributed systems, Kafka, AWS, and AI/LLM pipelines.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
-        /* Define modern colors & gradients */
         :root {
-            --primary-gradient: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
-            --primary-color: #2563eb;
-            --dark-color: #1e293b;
-            --light-color: #f1f5f9;
-            --text-main: #334155;
-            --text-light: #64748b;
-            --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --ease: cubic-bezier(0.23, 1, 0.32, 1);
+            --bg: #ffffff;
+            --bg-alt: #f8fafc;
+            --text: #1e293b;
+            --text-secondary: #64748b;
+            --accent: #2563eb;
+            --accent-light: rgba(37, 99, 235, 0.08);
+            --border: #e2e8f0;
+            --card-bg: #ffffff;
+            --card-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+            --card-hover: 0 10px 25px rgba(0,0,0,0.08);
+            --nav-bg: rgba(255,255,255,0.92);
+            --tag-bg: #f1f5f9;
+            --tag-text: #475569;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+        [data-theme="dark"] {
+            --bg: #0f172a;
+            --bg-alt: #1e293b;
+            --text: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --accent: #60a5fa;
+            --accent-light: rgba(96, 165, 250, 0.1);
+            --border: #334155;
+            --card-bg: #1e293b;
+            --card-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            --card-hover: 0 10px 25px rgba(0,0,0,0.3);
+            --nav-bg: rgba(15,23,42,0.92);
+            --tag-bg: #334155;
+            --tag-text: #cbd5e1;
         }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            color: var(--text-main);
-            line-height: 1.7;
-            overflow-x: hidden; /* Prevent horizontal scroll from animations */
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: background 0.3s, color 0.3s;
         }
 
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-        
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+        a { color: var(--accent); text-decoration: none; transition: 0.2s; }
+        a:hover { opacity: 0.8; }
 
-        /* Standardize section headings */
-        h2.section-title {
-            text-align: center;
-            font-size: 2.8rem;
-            font-weight: 700;
-            color: var(--dark-color);
-            margin-bottom: 50px;
-            position: relative;
-            padding-bottom: 15px;
-        }
+        .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
 
-        h2.section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--primary-gradient);
-            border-radius: 2px;
-        }
-
-        /* === Scroll Animation Setup === */
-        /* This class will be removed by JavaScript when the element is scrolled into view */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 1s var(--ease), transform 1s var(--ease);
-            will-change: transform, opacity;
-        }
-
-        /* This class is added by JavaScript */
-        .is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* === Navigation === */
+        /* === Nav === */
         nav {
-            background-color: rgba(255, 255, 255, 0.95);
-            padding: 15px 0;
-            position: fixed; /* Stick to top */
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            border-bottom: 1px solid #e2e8f0;
+            position: fixed; top: 0; width: 100%; z-index: 100;
+            background: var(--nav-bg); backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border); padding: 14px 0;
         }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo { font-weight: 700; font-size: 1.1rem; color: var(--text); }
+        .nav-logo span { color: var(--accent); }
+        .nav-links { display: flex; gap: 24px; align-items: center; list-style: none; }
+        .nav-links a { font-size: 0.9rem; font-weight: 500; color: var(--text-secondary); }
+        .nav-links a:hover { color: var(--accent); }
 
-        nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .theme-toggle {
+            background: none; border: 1px solid var(--border); border-radius: 8px;
+            padding: 6px 10px; cursor: pointer; color: var(--text-secondary);
+            font-size: 0.9rem; transition: 0.2s;
         }
+        .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
 
-        nav h1 { font-size: 1.6rem; color: var(--dark-color); }
-        nav h1 span { color: var(--primary-color); }
+        .hamburger { display: none; background: none; border: none; font-size: 1.4rem; color: var(--text); cursor: pointer; }
 
-        nav ul { list-style: none; display: flex; gap: 30px; }
-        nav ul li a { font-weight: 500; font-size: 0.95rem; color: var(--text-main); }
-        nav ul li a:hover { color: var(--primary-color); }
-
-        /* === Hero Section === */
+        /* === Hero === */
         #hero {
-            height: 100vh;
-            background-color: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding-top: 100px; /* Offset for fixed nav */
-            position: relative;
+            min-height: 100vh; display: flex; align-items: center;
+            padding-top: 80px;
         }
-        
-        /* Subtle moving background dots for hero */
-        #hero::before {
-            content: "";
-            position: absolute;
-            width: 100%; height: 100%;
-            background-image: radial-gradient(#e2e8f0 1.5px, transparent 1.5px);
-            background-size: 30px 30px;
-            opacity: 0.5;
-            top: 0; left: 0;
+        .hero-inner { display: flex; align-items: center; gap: 48px; width: 100%; }
+        .hero-photo {
+            width: 140px; height: 140px; border-radius: 50%; overflow: hidden; flex-shrink: 0;
+            border: 3px solid var(--accent);
         }
+        .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+        .hero-text h1 { font-size: 2.4rem; font-weight: 700; margin-bottom: 8px; }
+        .hero-text h1 span { color: var(--accent); }
+        .hero-tagline { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 20px; max-width: 540px; }
+        .hero-links { display: flex; gap: 12px; flex-wrap: wrap; }
+        .hero-links a {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 10px 20px; border-radius: 8px; font-size: 0.9rem; font-weight: 500;
+        }
+        .btn-fill { background: var(--accent); color: #fff; }
+        .btn-fill:hover { opacity: 0.9; transform: translateY(-1px); }
+        .btn-outline { border: 1px solid var(--border); color: var(--text); }
+        .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
 
-        .hero-content {
-            text-align: center;
-            z-index: 10;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        /* --- IMAGES: Profile Picture --- */
-        .profile-img-container {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            padding: 6px;
-            background: var(--primary-gradient);
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
-            animation: profileFloat 4s ease-in-out infinite; /* Continuous float animation */
+        /* === Sections === */
+        section { padding: 80px 0; }
+        .section-title {
+            font-size: 1.6rem; font-weight: 700; margin-bottom: 40px;
+            padding-bottom: 12px; border-bottom: 2px solid var(--border);
         }
 
-        .profile-img-container img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            background-color: white; /* Shows until image loads */
+        /* === Skills === */
+        .skills-group { margin-bottom: 24px; }
+        .skills-group-label { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); margin-bottom: 10px; }
+        .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+        .tag {
+            padding: 6px 14px; border-radius: 6px; font-size: 0.85rem; font-weight: 500;
+            background: var(--tag-bg); color: var(--tag-text); border: 1px solid var(--border);
         }
 
-        @keyframes profileFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        /* === Experience === */
+        .exp-item { margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid var(--border); }
+        .exp-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .exp-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; flex-wrap: wrap; gap: 8px; }
+        .exp-role { font-size: 1.05rem; font-weight: 600; }
+        .exp-date { font-size: 0.85rem; color: var(--text-secondary); }
+        .exp-company { font-size: 0.95rem; color: var(--accent); margin-bottom: 12px; }
+        .exp-bullets { list-style: none; }
+        .exp-bullets li { position: relative; padding-left: 18px; margin-bottom: 8px; font-size: 0.9rem; color: var(--text-secondary); }
+        .exp-bullets li::before { content: "–"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+
+        /* === Contact === */
+        #contact { background: var(--bg-alt); }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+        .contact-info p { color: var(--text-secondary); margin-bottom: 24px; font-size: 0.95rem; }
+        .contact-links { display: flex; flex-direction: column; gap: 14px; }
+        .contact-link {
+            display: flex; align-items: center; gap: 12px;
+            font-size: 0.95rem; color: var(--text);
         }
+        .contact-link i { width: 20px; color: var(--accent); }
 
-        #hero h2 { font-size: 4rem; color: var(--dark-color); margin-bottom: 10px; line-height: 1.1; }
-        #hero h2 span { background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-
-        /* --- ANIMATION: Typing Effect --- */
-        .typewriter h3 {
-            font-size: 1.8rem;
-            font-weight: 400;
-            color: var(--text-light);
-            margin-bottom: 40px;
-            display: inline-block;
-            border-right: 3px solid var(--primary-color); /* The cursor */
-            white-space: nowrap;
-            overflow: hidden;
-            letter-spacing: 1px;
-            width: 0; /* Starts hidden */
-            animation: typing 2.5s steps(30, end) 1s forwards, blink-cursor 0.75s step-end infinite;
+        /* Contact form */
+        .contact-form { display: flex; flex-direction: column; gap: 14px; }
+        .contact-form input, .contact-form textarea {
+            padding: 12px 16px; border-radius: 8px; border: 1px solid var(--border);
+            background: var(--bg); color: var(--text); font-family: inherit; font-size: 0.9rem;
+            transition: border 0.2s;
         }
-
-        @keyframes typing { from { width: 0; } to { width: 100%; } }
-        @keyframes blink-cursor { from, to { border-color: transparent; } 50% { border-color: var(--primary-color); } }
-
-        .btn-container { display: flex; gap: 20px; }
-
-        .btn {
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            cursor: pointer;
+        .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--accent); }
+        .contact-form textarea { resize: vertical; min-height: 100px; }
+        .contact-form button {
+            padding: 12px 24px; background: var(--accent); color: #fff; border: none;
+            border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer;
+            transition: 0.2s; align-self: flex-start;
         }
+        .contact-form button:hover { opacity: 0.9; }
 
-        /* --- ANIMATION: Hover Effects --- */
-        .btn-primary {
-            background: var(--primary-gradient);
-            color: white;
-            border: none;
-            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
-        }
-        .btn-primary:hover {
-            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
-        }
-        .btn-secondary:hover {
-            background-color: rgba(37, 99, 235, 0.05);
-            transform: translateY(-2px);
-        }
-
-        /* === Sections General === */
-        section { padding: 100px 0; border-bottom: 1px solid #e2e8f0; }
-
-        /* === Skills Section === */
-        #skills { background-color: var(--light-color); }
-        
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
-            text-align: center;
-        }
-
-        /* --- ANIMATION: Skill Card Hover --- */
-        .skill-badge {
-            background: white;
-            border: 1px solid #e2e8f0;
-            padding: 25px 15px;
-            border-radius: 12px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-            transition: all 0.4s var(--ease);
-        }
-
-        .skill-badge:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--card-shadow);
-            border-color: var(--primary-color);
-        }
-
-        .skill-badge i { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 15px; display: block;}
-        .skill-badge span { font-weight: 600; color: var(--dark-color); display: block; }
-
-        /* === Experience Section === */
-        .job-card {
-            background: white;
-            border-radius: 16px;
-            padding: 40px;
-            margin-bottom: 30px;
-            box-shadow: var(--card-shadow);
-            display: grid;
-            grid-template-columns: 80px 1fr; /* Logo column and content column */
-            gap: 25px;
-            transition: transform 0.3s ease;
-        }
-
-        /* --- ANIMATION: Job Card Hover --- */
-        .job-card:hover { transform: scale(1.02); }
-
-        /* --- IMAGES: Company Logos --- */
-        .company-logo {
-            width: 80px; height: 80px;
-            background-color: var(--light-color);
-            border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-            overflow: hidden; padding: 10px;
-        }
-        .company-logo img { max-width: 100%; max-height: 100%; object-fit: contain; }
-
-        .job-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 15px;
-        }
-        
-        .job-title { color: var(--dark-color); font-size: 1.4rem; font-weight: 700; }
-        .job-company { color: var(--primary-color); font-weight: 600; font-size: 1.1rem; }
-        .job-date { color: var(--text-light); font-size: 0.9rem; }
-        
-        .job-card ul { list-style: none; margin-top: 15px; }
-        .job-card ul li { position: relative; padding-left: 25px; margin-bottom: 10px; color: var(--text-main); }
-        .job-card ul li::before {
-            content: "\f00c"; /* FontAwesome checkmark */
-            font-family: "Font Awesome 6 Free"; font-weight: 900;
-            position: absolute; left: 0; color: #10b981; /* green */
-        }
-
-        /* === Footer / Contact === */
+        /* === Footer === */
         footer {
-            background-color: var(--dark-color);
-            color: white;
-            text-align: center;
-            padding: 60px 0 30px;
-        }
-        
-        #contact h2 { color: white; border-bottom-color: white; margin-bottom: 30px; }
-        #contact p { max-width: 500px; margin: 0 auto 40px; color: #cbd5e1; }
-
-        .social-links { margin-bottom: 40px; display: flex; justify-content: center; gap: 20px; }
-        
-        .social-link {
-            width: 50px; height: 50px;
-            background-color: rgba(255,255,255,0.08);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.3rem; transition: all 0.3s ease;
-        }
-        
-        .social-link:hover {
-            background: var(--primary-gradient);
-            transform: rotate(360deg);
+            text-align: center; padding: 24px 0; font-size: 0.8rem;
+            color: var(--text-secondary); border-top: 1px solid var(--border);
         }
 
-        footer .container p { font-size: 0.9rem; color: #94a3b8; }
-
-        /* === Responsive Adaptation === */
-        @media(max-width: 768px) {
-            #hero h2 { font-size: 2.8rem; }
-            .typewriter h3 { font-size: 1.3rem; }
-            .job-card { grid-template-columns: 1fr; text-align: center; justify-items: center;}
-            .job-header { flex-direction: column; align-items: center; gap: 10px;}
-            .job-card ul { text-align: left; }
+        /* === Responsive === */
+        @media (max-width: 768px) {
+            .hero-inner { flex-direction: column; text-align: center; }
+            .hero-text h1 { font-size: 1.8rem; }
+            .hero-tagline { margin: 0 auto 20px; }
+            .hero-links { justify-content: center; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; position: absolute; top: 56px; left: 0; right: 0; background: var(--nav-bg); flex-direction: column; padding: 20px; gap: 16px; border-bottom: 1px solid var(--border); }
+            .nav-links.open { display: flex; }
+            .hamburger { display: block; }
+            .exp-header { flex-direction: column; }
         }
     </style>
 </head>
 <body>
-
     <nav>
         <div class="container">
-            <h1>Raj<span> Bhatkariya</span></h1>
-            <ul>
+            <div class="nav-logo">raj<span>.</span></div>
+            <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links">
                 <li><a href="#hero">Home</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><i class="fas fa-moon"></i></button></li>
             </ul>
         </div>
     </nav>
 
-    <header id="hero">
-        <div class="hero-content container">
-            
-            <div class="profile-img-container">
-                <img src="profile_pic.jpg" alt="Raj Bhatkariya Professional Headshot">
-            </div>
-
-            <h2>I'm <span>Raj</span>.</h2>
-            <div class="typewriter">
-                <h3>Senior Software Engineer</h3>
-            </div>
-            
-            <div class="btn-container">
-                <a href="#contact" class="btn btn-primary">Let's Connect</a>
-                <a href="Raj_Resume 15-jul.pdf" class="btn btn-secondary" target="_blank">View Resume</a>
+    <section id="hero">
+        <div class="container">
+            <div class="hero-inner">
+                <div class="hero-photo">
+                    <img src="profile_pic.jpg" alt="Raj Bhatkariya">
+                </div>
+                <div class="hero-text">
+                    <h1>Raj <span>Bhatkariya</span></h1>
+                    <p class="hero-tagline">Software Engineer at Nielsen. I build data pipelines, work on large-scale Java platforms, and lately have been deep into LLMs and AI tooling. Based in Bengaluru.</p>
+                    <div class="hero-links">
+                        <a href="mailto:raj.bhadkariya1344@gmail.com" class="btn-fill"><i class="fas fa-envelope"></i> Email Me</a>
+                        <a href="https://www.linkedin.com/in/raj-bhatkariya-694a401b9/" target="_blank" class="btn-outline"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                        <a href="https://github.com/Rajbhatkariya13" target="_blank" class="btn-outline"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="resume-raj.pdf" target="_blank" class="btn-outline"><i class="fas fa-file-pdf"></i> Resume</a>
+                    </div>
+                </div>
             </div>
         </div>
-    </header>
+    </section>
 
-    <section id="skills">
-        <div class="container animate-on-scroll">
-            <h2 class="section-title">Technical Mastery</h2>
-            <div class="skills-grid">
-                
-                <div class="skill-badge">
-                    <i class="fab fa-java"></i>
-                    <span>Java (8/21)</span>
+    <section id="skills" style="background: var(--bg-alt);">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-group">
+                <div class="skills-group-label">Languages</div>
+                <div class="tags">
+                    <span class="tag">Java (8–21)</span>
+                    <span class="tag">Python 3</span>
+                    <span class="tag">Golang</span>
+                    <span class="tag">SQL</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Bash</span>
                 </div>
-                <div class="skill-badge">
-                    <i class="fas fa-leaf"></i>
-                    <span>Spring Boot</span>
+            </div>
+            <div class="skills-group">
+                <div class="skills-group-label">Backend & Frameworks</div>
+                <div class="tags">
+                    <span class="tag">Spring Boot</span>
+                    <span class="tag">Struts</span>
+                    <span class="tag">LangChain</span>
+                    <span class="tag">React</span>
+                    <span class="tag">REST</span>
+                    <span class="tag">gRPC</span>
                 </div>
-                <div class="skill-badge">
-                    <i class="fas fa-network-wired"></i>
-                    <span>Microservices</span>
+            </div>
+            <div class="skills-group">
+                <div class="skills-group-label">Data & Messaging</div>
+                <div class="tags">
+                    <span class="tag">Apache Kafka</span>
+                    <span class="tag">ActiveMQ</span>
+                    <span class="tag">PostgreSQL</span>
+                    <span class="tag">Oracle</span>
+                    <span class="tag">Redis</span>
+                    <span class="tag">DynamoDB</span>
+                    <span class="tag">MySQL</span>
+                    <span class="tag">SQS</span>
                 </div>
-                <div class="skill-badge">
-                    <i class="fas fa-cloud"></i>
-                    <span>AWS & CloudWatch</span>
+            </div>
+            <div class="skills-group">
+                <div class="skills-group-label">Cloud & DevOps</div>
+                <div class="tags">
+                    <span class="tag">AWS</span>
+                    <span class="tag">Docker</span>
+                    <span class="tag">Kubernetes</span>
+                    <span class="tag">Helm</span>
+                    <span class="tag">Terraform</span>
+                    <span class="tag">Jenkins</span>
+                    <span class="tag">CI/CD</span>
+                    <span class="tag">CloudWatch</span>
                 </div>
-                <div class="skill-badge">
-                    <i class="fas fa-database"></i>
-                    <span>MySQL / Oracle</span>
+            </div>
+            <div class="skills-group">
+                <div class="skills-group-label">AI & LLM</div>
+                <div class="tags">
+                    <span class="tag">AWS Bedrock (Claude)</span>
+                    <span class="tag">LLM Agents</span>
+                    <span class="tag">RAG Pipelines</span>
+                    <span class="tag">AI Code Generation</span>
                 </div>
-                <div class="skill-badge">
-                    <i class="fab fa-react"></i>
-                    <span>React JS</span>
-                </div>
-                <div class="skill-badge">
-                    <i class="fab fa-jenkins"></i>
-                    <span>Jenkins / CI/CD</span>
-                </div>
-                
             </div>
         </div>
     </section>
 
     <section id="experience">
         <div class="container">
-            <h2 class="section-title animate-on-scroll">Professional Journey</h2>
+            <h2 class="section-title">Experience</h2>
 
-            <div class="job-card animate-on-scroll">
-                <div class="company-logo">
-                    <img src="nielsen_logo.png" alt="Nielsen Media Logo">
+            <div class="exp-item">
+                <div class="exp-header">
+                    <span class="exp-role">Member of Technical Staff – 2</span>
+                    <span class="exp-date">Jan 2025 – Present</span>
                 </div>
-                <div>
-                    <div class="job-header">
-                        <div>
-                            <div class="job-title">Senior Software Engineer</div>
-                            <div class="job-company">Nielsen Media India</div>
-                        </div>
-                        <div class="job-date">January 2025 – Present</div>
-                    </div>
-                    <ul>
-                        <li><strong>Led the Java 8 to 21 migration:</strong> Upgraded legacy applications to modern microservice standards, addressing major customer pain points and noticeably improving overall system performance and efficiency.</li>
-                        <li><strong>Built Near Real-Time (NRT) capabilities:</strong> Designed the Low-Level Design (LLD) and implemented features that successfully transitioned downstream systems to a faster, real-time data flow.</li>
-                        <li><strong>Improved system observability:</strong> Enhanced data consistency and proactive monitoring for legacy systems by setting up AWS CloudWatch alarms and developing custom alerting applications.</li>
-                        <li><strong>Delivered customer-focused solutions:</strong> Worked closely with stakeholders to understand user pain points, translating those needs into practical technical designs and delivering effective solutions.</li>
-                        <li><strong>Resolved ongoing application issues:</strong> Investigated complex system bugs, applied structural fixes, and improved internal processes to provide a smoother, more reliable customer experience.</li></ul>
-                        <li><strong>United and guided the team:</strong> Fostered a supportive team environment, guiding technical execution and working together to successfully hit our project milestones.</li>                
-                    </div>
+                <div class="exp-company">Nielsen Media India — Bengaluru</div>
+                <ul class="exp-bullets">
+                    <li>Built a data ingestion platform pulling TV schedules from 200+ sources (REST, FTP/SFTP, S3) with auth and dedup. Cut onboarding time from 5 days to 4 hours.</li>
+                    <li>Wrote the document parser for PDFs, Excel, XML, HTML, DOCX, CSV — uses transformer pipelines with LLM-based field mapping.</li>
+                    <li>Set up RAG workflows with AWS Bedrock and LangChain that auto-generate parser configs and fix broken extraction rules.</li>
+                    <li>Deployed conversion service on Kubernetes (Helm + EKS) with Terraform and SQS orchestration.</li>
+                    <li>Work on the main NEd platform — large-scale Java/Spring codebase backed by PostgreSQL, Kafka, and ActiveMQ. Handle production escalations and own upstream/downstream integrations.</li>
+                    <li>Rebuilt Kafka pipelines with exactly-once semantics, partition-aware consumers, and DLQs. Zero data loss in production.</li>
+                    <li>Led Java 8→21 migration. Designed the NRT flow using Kafka + ActiveMQ relay — schedule data delivery went from days to under 60 minutes.</li>
+                    <li>Set up CloudWatch dashboards and alerting — cut mean-time-to-detect for pipeline issues by ~70%.</li>
+                </ul>
             </div>
 
-            <div class="job-card animate-on-scroll">
-                <div class="company-logo">
-                    <i class="fas fa-building fa-2x" style="color:#64748b"></i> </div>
-                <div>
-                    <div class="job-header">
-                        <div>
-                            <div class="job-title">Software Developer</div>
-                            <div class="job-company">Conneqtion Consultancy</div>
-                        </div>
-                        <div class="job-date">April 2023 – January 2025</div>
-                    </div>
-                    <ul>
-                        <li>Managed end-to-end API development for retail clients, engineering RESTful APIs.</li>
-                        <li>Modernized legacy architecture, revamping a monolithic codebase into microservices.</li>
-                    </ul>
+            <div class="exp-item">
+                <div class="exp-header">
+                    <span class="exp-role">Software Developer</span>
+                    <span class="exp-date">Apr 2023 – Jan 2025</span>
                 </div>
+                <div class="exp-company">Conneqtion Consultancy</div>
+                <ul class="exp-bullets">
+                    <li>Broke a monolith into 5 Spring Boot microservices. Set up CI/CD — deployments went from 2 hours to 15 minutes.</li>
+                    <li>Wrote safety stock and eligibility logic for 100K+ SKUs. Tuned Oracle/PostgreSQL queries for better throughput.</li>
+                    <li>Dockerized services and deployed to Kubernetes with health checks, resource limits, and rolling updates.</li>
+                    <li>Integrated Payment APIs and built maker-checker approval flows with full audit trail.</li>
+                </ul>
             </div>
 
-            <div class="job-card animate-on-scroll">
-                <div class="company-logo">
-                    <i class="fas fa-university fa-2x" style="color:#64748b"></i> 
+            <div class="exp-item">
+                <div class="exp-header">
+                    <span class="exp-role">Software Developer</span>
+                    <span class="exp-date">Sep 2022 – Mar 2023</span>
                 </div>
-                <div>
-                    <div class="job-header">
-                        <div>
-                            <div class="job-title">Software Developer</div>
-                            <div class="job-company">Immersive Infotech (Montran India)</div>
-                        </div>
-                        <div class="job-date">September 2022 – December 2023</div>
-                    </div>
-                    <ul>
-                        <li><strong>Engineered core banking software</strong> by contributing to the development of Kotak Mahindra Bank's Public Financial Management System (PFMS).</li>
-                        <li><strong>Architected backend solutions</strong> using Java and Struts, successfully deploying critical system modifications.</li>
-                        <li><strong>Managed dynamic change requests</strong>, ensuring swift and effective resolution of structural and functional updates.</li>
-                    </ul>
-                </div>
+                <div class="exp-company">Immersive Infotech (Montran India)</div>
+                <ul class="exp-bullets">
+                    <li>Worked on Kotak Mahindra Bank's PFMS system (Java/Struts). Delivered 50+ change requests with zero production incidents.</li>
+                    <li>Code reviews, unit tests, secure handling of financial data. Standard Agile workflow.</li>
+                </ul>
             </div>
 
-            <div class="job-card animate-on-scroll">
-                <div class="company-logo">
-                    <i class="fas fa-graduation-cap fa-2x" style="color:#64748b"></i> 
+            <div class="exp-item">
+                <div class="exp-header">
+                    <span class="exp-role">Software Developer Intern</span>
+                    <span class="exp-date">Aug 2021 – Jun 2022</span>
                 </div>
-                <div>
-                    <div class="job-header">
-                        <div>
-                            <div class="job-title">Software Developer</div>
-                            <div class="job-company">Cerebry (iPrep Learning Solutions)</div>
-                        </div>
-                        <div class="job-date">August 2021 – June 2022</div>
-                    </div>
-                    <ul>
-                        <li><strong>Engineered a dynamic educational framework</strong> capable of automatically generating unique mathematical equations and corresponding solutions.</li>
-                        <li><strong>Designed automated tagging scripts</strong> to streamline data classification and improve database query efficiency.</li>
-                        <li><strong>Automated manual backend processes</strong>, significantly enhancing team productivity and reducing repetitive tasks.</li>
-                    </ul>
-                </div>
+                <div class="exp-company">Cerebry (IPREP Learning Solutions)</div>
+                <ul class="exp-bullets">
+                    <li>Built a framework that auto-generates math problems (Java + Python) for the adaptive learning engine.</li>
+                    <li>Wrote data tagging and classification pipelines — improved content discoverability by 25%.</li>
+                </ul>
             </div>
-
-        </div>
-    </section>
-    <section id="education" style="background-color: var(--light-color);">
-        <div class="container">
-            <h2 class="section-title animate-on-scroll">Education</h2>
-
-            <div class="job-card animate-on-scroll">
-                <div class="company-logo">
-                    <i class="fas fa-user-graduate fa-2x" style="color:#64748b"></i>
-                </div>
-                <div>
-                    <div class="job-header">
-                        <div>
-                            <div class="job-title">Bachelor of Technology, CSE</div>
-                            <div class="job-company">Government Engineering College — Ujjain, MP</div>
-                        </div>
-                        <div class="job-date">June 2018 – March 2022</div>
-                    </div>
-                    <ul style="margin-top: 5px;">
-                        <li><strong>CGPA:</strong> 7.0</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="job-card animate-on-scroll">
-                <div class="company-logo">
-                    <i class="fas fa-school fa-2x" style="color:#64748b"></i>
-                </div>
-                <div>
-                    <div class="job-header">
-                        <div>
-                            <div class="job-title">Higher Secondary School, PCM</div>
-                            <div class="job-company">Govt. School for Excellence — Ujjain, MP</div>
-                        </div>
-                        <div class="job-date">March 2017 – May 2018</div>
-                    </div>
-                    <ul style="margin-top: 5px;">
-                        <li><strong>Percentage:</strong> 78%</li>
-                    </ul>
-                </div>
-            </div>
-
         </div>
     </section>
 
-    <footer id="contact">
+    <section id="contact">
         <div class="container">
-            <div class="animate-on-scroll">
-                <h2 class="section-title">Get In Touch</h2>
-                <p>I'm open to interesting opportunities, collaborations, or discussing how I can help solve your architectural challenges.</p>
+            <h2 class="section-title">Get in Touch</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <p>Open to interesting opportunities, collaborations, or just a chat about distributed systems and AI. Drop me a message.</p>
+                    <div class="contact-links">
+                        <a href="mailto:raj.bhadkariya1344@gmail.com" class="contact-link"><i class="fas fa-envelope"></i> raj.bhadkariya1344@gmail.com</a>
+                        <a href="tel:+918461974812" class="contact-link"><i class="fas fa-phone"></i> +91 8461974812</a>
+                        <a href="https://www.linkedin.com/in/raj-bhatkariya-694a401b9/" target="_blank" class="contact-link"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                        <a href="https://github.com/Rajbhatkariya13" target="_blank" class="contact-link"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+                <form class="contact-form" action="https://formspree.io/f/xrgndqjk" method="POST">
+                    <input type="text" name="name" placeholder="Your name" required>
+                    <input type="email" name="_replyto" placeholder="Your email" required>
+                    <textarea name="message" placeholder="Your message..." required></textarea>
+                    <button type="submit"><i class="fas fa-paper-plane"></i> Send Message</button>
+                </form>
             </div>
-            
-            <div class="social-links animate-on-scroll">
-            <a href="https://www.linkedin.com/in/raj-bhatkariya-694a401b9/" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/Rajbhatkariya13" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="mailto:raj.bhadkariya1344@gmail.com"><i class="fas fa-envelope"></i></a>
         </div>
-            
-            <p class="animate-on-scroll">&copy; 2026 Raj Bhatkariya. Built with passion and code.</p>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Raj Bhatkariya</p>
         </div>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Options for the observer
-            const observerOptions = {
-                root: null, // Use viewport
-                rootMargin: '0px',
-                threshold: 0.15 // Trigger when 15% of element is visible
-            };
-
-            // Define the observer
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        // Add the visible class when it enters the viewport
-                        entry.target.classList.add('is-visible');
-                        
-                        // Stop observing once visible (so it doesn't animate every time you scroll up/down)
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-
-            // Select all elements to animate and attach the observer
-            const animatedElements = document.querySelectorAll('.animate-on-scroll');
-            animatedElements.forEach(el => observer.observe(el));
+        function toggleTheme() {
+            const html = document.documentElement;
+            const current = html.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+            document.querySelector('.theme-toggle i').className = next === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+        // Load saved theme
+        const saved = localStorage.getItem('theme');
+        if (saved) {
+            document.documentElement.setAttribute('data-theme', saved);
+            if (saved === 'dark') document.querySelector('.theme-toggle i').className = 'fas fa-sun';
+        }
+        // Close mobile nav on link click
+        document.querySelectorAll('.nav-links a').forEach(a => {
+            a.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'));
         });
     </script>
-
 </body>
 </html>
